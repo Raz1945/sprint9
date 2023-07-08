@@ -1,0 +1,109 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Tasks",
+    "dateExported": "2023-07-08T02:18:33.898Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "08fd9869-9b79-443d-93bd-81467011523a",
+            "name": "User",
+            "containerId": "",
+            "created": "2023-07-07T14:11:52.365Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "e369c452-9a5c-4a8c-a404-47890df566fe",
+            "name": "Task",
+            "containerId": "",
+            "created": "2023-07-07T14:12:10.360Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "323a67d0-b5cd-4fd6-95f8-29a786ebe04f",
+            "colId": "a9ea2f50-fd74-45ae-b16b-5c0fc16c7dfd",
+            "containerId": "e369c452-9a5c-4a8c-a404-47890df566fe",
+            "name": "getAll",
+            "url": "http://localhost:3000/api/tasks",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-07-04T00:08:40.136Z",
+            "modified": "2023-07-04T01:13:46.046Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "42938dcf-005c-4af4-9e06-53430471474d",
+            "colId": "a9ea2f50-fd74-45ae-b16b-5c0fc16c7dfd",
+            "containerId": "08fd9869-9b79-443d-93bd-81467011523a",
+            "name": "createUser",
+            "url": "http://localhost:3000/api/tasks/user",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-07-04T13:16:22.153Z",
+            "modified": "2023-07-06T12:58:10.770Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"prueba@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7c86de00-6354-416d-94d9-84d093299d71",
+            "colId": "a9ea2f50-fd74-45ae-b16b-5c0fc16c7dfd",
+            "containerId": "e369c452-9a5c-4a8c-a404-47890df566fe",
+            "name": "getOne",
+            "url": "http://localhost:3000/api/tasks/5",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-07-04T01:13:28.652Z",
+            "modified": "2023-07-07T14:12:47.590Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4ab4ee8c-e75a-498d-a907-9c0c10251c09",
+            "colId": "a9ea2f50-fd74-45ae-b16b-5c0fc16c7dfd",
+            "containerId": "e369c452-9a5c-4a8c-a404-47890df566fe",
+            "name": "createTask",
+            "url": "http://localhost:3000/api/tasks/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-07-06T13:50:54.181Z",
+            "modified": "2023-07-07T22:49:01.641Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"usuario\": \"PRUEba@gmail.com\",\n  \"tarea\": \"ver numero de tarea\",\n  \"prioridad\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a5aff3e9-7775-4cff-bd00-ea86c7317e0d",
+            "colId": "a9ea2f50-fd74-45ae-b16b-5c0fc16c7dfd",
+            "containerId": "e369c452-9a5c-4a8c-a404-47890df566fe",
+            "name": "Delete",
+            "url": "http://localhost:3000/api/tasks/5",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-07-07T22:44:32.364Z",
+            "modified": "2023-07-07T23:39:49.485Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"usuario\": \"PRUEba@gmail.com\",\n  \"id\":1 \n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
