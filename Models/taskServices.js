@@ -1,6 +1,7 @@
 const knex = require("../Database/database");
 
 const getAll = () => {
+  // Obtener todas las tareas con información relacionada
   return knex
     .select({
       id: "ta.id",
@@ -16,6 +17,7 @@ const getAll = () => {
 };
 
 const getOne = (id) => {
+  // Obtener una tarea por su ID con información relacionada
   return knex
     .select({
       id: "ta.id",
@@ -30,43 +32,89 @@ const getOne = (id) => {
     .where("us.id", id);
 };
 
-const create = (data, user, priority) => {
+const create = (data, user) => {
+  // Crear una nueva tarea con el usuario y prioridad especificados
   return knex("tarea")
     .insert({
-      titulo: data.tarea,
+      titulo: data.titulo,
       usuario_id: user,
-      prioridad_id: priority,
+      prioridad_id: data.prioridad_id,
     })
     .returning("*");
 };
 
-const findUser = (data) => {
-  return knex
+const findUser = async (data) => {
+  // Buscar un usuario por su correo electrónico
+
+  // Verificar que exista el usuario
+  const userExists = await knex
     .select("*")
     .from("usuario")
-    .where("email", data.usuario);
+    .where("email", data.usuario)
+    .first();
+  if (!userExists) {
+    throw new Error("El usuario no existe.");
+  }
+
+  return userExists;
 };
 
-const findPriority = (data) => {
-  const { prioridad } = data;
+const findPriority = async (data) => {
+  // Buscar la prioridad correspondiente según el tipo de dato de entrada
+  //? console.log({ la_prioridad_encontrada_es: data });
 
   let query = knex.select("*").from("prioridad");
 
-  if (isNaN(prioridad)) {
-    query = query.where("nombre", prioridad);
+  if (isNaN(data)) {
+    // Si la data no es un número, buscar por el nombre
+    query = query.where("nombre", data);
   } else {
-    query = query.where("id", parseInt(prioridad));
+    // Si la data es un número, buscar por el ID
+    query = query.where("id", parseInt(data));
   }
 
-  return query;
+  return await query.first();
 };
 
-const deleteTask = (taskId) => {
-  return knex("tarea").where("usuario_id", taskId).del();
+const findTask = async (data) => {
+  // Verifica que exista la tarea
+  const taskExists = await knex("tarea").where("id", data.task_id).first();
+
+  if (!taskExists) {
+    throw new Error("La tarea no existe.");
+  }
+
+  return taskExists;
 };
 
-const deleteTaskWhithUser = (taskId) => {
-  return knex("tarea").where("usuario_id", taskId).del();
+const deleteTask = async (data) => {
+  // Elimina una tarea si se cumplen las condiciones
+
+  await findUser(data);
+  await findTask(data);
+
+  // Si ambos existen, eliminar la tarea
+  await knex("tarea").where("id", data.task_id).del();
 };
 
-module.exports = { getAll, getOne, create, findUser, findPriority, deleteTask };
+const update = async (data, updatedData) => {
+  // Actualizar una tarea
+  // ? console.log({ updatedata: updatedData });
+
+  await findUser(data);
+  await findTask(data);
+
+  await knex("tarea as ta")
+    .where("ta.id", data.task_id)
+    .update(updatedData);
+};
+module.exports = {
+  getAll,
+  getOne,
+  create,
+  findUser,
+  findPriority,
+  findTask,
+  deleteTask,
+  update,
+};

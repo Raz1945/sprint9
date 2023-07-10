@@ -1,0 +1,167 @@
+{
+    "info": {
+        "_postman_id": "c99ceee3-7cd5-4bde-8b37-bb1bf5f97bca",
+        "name": "Tasks",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "createUser",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks/user",
+                            "path": [
+                                "api",
+                                "tasks",
+                                "user"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"email\": \"prueba@gmail.com\"\n}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Task",
+            "item": [
+                {
+                    "name": "getAll",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks",
+                            "path": [
+                                "api",
+                                "tasks"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        }
+                    }
+                },
+                {
+                    "name": "getOne",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks/5",
+                            "path": [
+                                "api",
+                                "tasks",
+                                "5"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        }
+                    }
+                },
+                {
+                    "name": "createTask",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks/",
+                            "path": [
+                                "api",
+                                "tasks"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"usuario\": \"PRueba@gmail.com\",\n  \"tarea\": \"Borrar de pikachu\",\n  \"prioridad\": \"media\"\n  // \"prioridad\": 1\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks/41",
+                            "path": [
+                                "api",
+                                "tasks",
+                                "41"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"usuario\": \"PRUEba@gmail.com\",\n  \"task_id\": 61\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "changeTask",
+                    "request": {
+                        "method": "PUT",
+                        "url": {
+                            "raw": "http://localhost:3000/api/tasks/",
+                            "path": [
+                                "api",
+                                "tasks"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "3000"
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"usuario\": \"Prueba@gmail.com\",\n  \"task_id\": 66,\n  \"tarea\": \"quiero DOS pikachus\",\n  \"prioridad\": 1,\n  \"completado\": 22\n}"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
